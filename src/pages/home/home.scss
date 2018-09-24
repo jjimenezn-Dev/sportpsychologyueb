@@ -1,3 +1,23 @@
 page-home {
+    .centered_container{
+        display: block;
+        max-width: 80%;
+        margin: auto;
+        margin-top: 40%;
+    }
+    
+    .tittle_big{
+        padding: 20px;
+        text-align: center;
+    }
 
+    .start_button{
+        display: block;
+        width: 100px;
+        text-align: center; 
+        margin: auto;
+        padding: 25px;
+        margin-top: 30px;
+        width: 50%;
+    }
 }

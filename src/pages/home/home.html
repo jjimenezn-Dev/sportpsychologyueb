@@ -6,5 +6,13 @@
 </ion-header>
 
 <ion-content padding>
-  
+  <div class="form_container">
+    <h1 class="label_title">
+      Bienvenido
+    </h1>
+    <ion-item>
+      <ion-input [(ngModel)]="person_id" type="number" placeholder="Cedula"></ion-input>
+    </ion-item>
+    <button class="start_button" (click)="openPage()">Empezar</button>
+  </div>
 </ion-content>
