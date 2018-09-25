@@ -13,4 +13,8 @@ export class HomePage {
 
   }
 
+  start(){
+    this.navCtrl.setRoot(FormPage);
+  }
+
 }

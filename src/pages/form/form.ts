@@ -14,7 +14,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'form.html',
 })
 export class FormPage {
+  persona: any= {
+    nombre: "",
+    carrera: "",
+    altura: "",
+    edad: "",
+    genero: "",
 
+  }
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

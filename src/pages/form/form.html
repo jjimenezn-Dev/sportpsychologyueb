@@ -14,13 +14,31 @@
 
 
 <ion-content padding>
-  <div>
-    <ion-label class="label_title">
-      nombre
-    </ion-label>
-    <ion-item>
-      <ion-input [(ngModel)]="person_id" type="number" placeholder="Cedula"></ion-input>
+  <div class="form_container">
+    <ion-item class="form_element">
+      <ion-input [(ngModel)]="persona.nombre" type="text" placeholder="Nombre"></ion-input>
     </ion-item>
-    <button class="start_button" (click)="openPage()">Empezar</button>
+    <ion-item class="form_select">
+      <ion-label floating>Carrera</ion-label>
+      <ion-select [(ngModel)]="persona.carrera">
+        <ion-option value="Ingenieria">Ingenieria</ion-option>
+        <ion-option value="Psicologia">Psicologia</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item class="form_element">
+      <ion-input [(ngModel)]="persona.altura" type="text" placeholder="Altura"></ion-input>
+    </ion-item>
+    <ion-item class="form_element">
+      <ion-input [(ngModel)]="persona.edad" type="text" placeholder="Edad"></ion-input>
+    </ion-item>
+    <ion-item class="form_select">
+      <ion-label floating>Genero</ion-label>
+      <ion-select [(ngModel)]="persona.genero">
+        <ion-option value="Maculino">Hombre</ion-option>
+        <ion-option value="Femenino">Mujer</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <button class="start_button" (click)="openScoreBoard()">Empezar</button>
   </div>
 </ion-content>
