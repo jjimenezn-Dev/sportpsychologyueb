@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ScoreBoardPage } from '../score-board/score-board';
 
 /**
  * Generated class for the FormPage page.
@@ -23,6 +24,10 @@ export class FormPage {
 
   }
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+
+  openScoreBoard(){
+    this.navCtrl.setRoot(ScoreBoardPage);
   }
 
   ionViewDidLoad() {

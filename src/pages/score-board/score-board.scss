@@ -1,3 +1,35 @@
-page-score-board {
+page-score-board {   
+    .fecha{
+        text-align: right;
+    } 
+    .tittle_big{
+        padding: 20px;
+        text-align: center;
+    }
+    .start_button{
+        display: block;
+        text-align: center; 
+        margin: auto;
+        padding: 25px;
+        margin-top: 30px;
+        width: 70%;
+    }
 
+    .scores{
+        padding: 10px 40px;
+        box-shadow: 1px 2px #000;
+        border-width: 0.5px;
+        border-style: solid;
+        
+    }
+
+    .score{
+        text-align: right;
+        padding: 5px;
+    }
+
+    .own{
+        padding: 10px;
+        text-align: center;
+    }
 }
