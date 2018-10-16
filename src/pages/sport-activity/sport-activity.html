@@ -9,11 +9,38 @@
   <ion-navbar>
     <ion-title>sport-activity</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-<div class="map2" id="map2" [ngStyle]="{'height': model_name=='TaskRoute' ? '100%' : 'calc(100% - 53px)' }"></div>
-
 <ion-content padding>
+  <ion-row>
+    <ion-col col-12 class="icon_time">
+      <ion-icon name="time"></ion-icon>
+      <p>{{maxTime}}</p>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-3></ion-col>
+    <ion-col class="icon_mode" col-3>
+      <ion-icon name="walk" [ngClass]="{'icon-selected' : activity.walk, 'icon-nonselect': !activity.walk}" (click)="selecIcon('walk')">
+        <p>15km</p>
+      </ion-icon>
+    </ion-col>
+    <ion-col class="icon_mode" col-3>
+      <ion-icon name="bicycle" [ngClass]="{'icon-selected' : activity.bike ,'icon-nonselect': !activity.bike}" (click)="selecIcon('bike')">
+        <p>0km</p>
+      </ion-icon>
+    </ion-col>
+    <ion-col col-3></ion-col>
+  </ion-row>
 
+  <div class="map" id="map"></div>
+
+  <ion-row>
+    <ion-col col-6>
+      <button class="start_button" (click)="openCardiac()">Medir Ritmo Cardiaco</button>
+    </ion-col>
+    <ion-col col-6>
+      <button class="start_button" (click)="startTime()">{{actividad}}</button>
+    </ion-col>
+  </ion-row>
 </ion-content>

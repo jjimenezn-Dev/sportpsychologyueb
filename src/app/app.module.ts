@@ -12,6 +12,7 @@ import { FormPage } from '../pages/form/form';
 import { SportActivityPage } from '../pages/sport-activity/sport-activity';
 
 import { CardiacModalPage } from '../pages/cardiac-modal/cardiac-modal';
+import { Geolocation } from '@ionic-native/geolocation';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { CardiacModalPage } from '../pages/cardiac-modal/cardiac-modal';
   providers: [
     StatusBar,
     SplashScreen,
+    Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

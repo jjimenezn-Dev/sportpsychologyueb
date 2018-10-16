@@ -42,11 +42,11 @@ export class ScoreBoardPage {
 
 
   openActivity(){
-    this.navCtrl.setRoot(SportActivityPage);
+    this.navCtrl.push(SportActivityPage);
   }
 
 
   openCardiac(){
-    this.navCtrl.setRoot(CardiacPage);
+    this.navCtrl.push(CardiacPage);
   }
 }
