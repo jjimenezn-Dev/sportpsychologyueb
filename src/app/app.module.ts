@@ -13,6 +13,8 @@ import { SportActivityPage } from '../pages/sport-activity/sport-activity';
 
 import { CardiacModalPage } from '../pages/cardiac-modal/cardiac-modal';
 import { Geolocation } from '@ionic-native/geolocation';
+import { ConfigServiceProvider } from '../providers/config-service/config-service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { Geolocation } from '@ionic-native/geolocation';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -42,7 +45,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     StatusBar,
     SplashScreen,
     Geolocation,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ConfigServiceProvider
   ]
 })
 export class AppModule {}
