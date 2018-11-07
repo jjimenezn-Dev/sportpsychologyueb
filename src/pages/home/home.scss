@@ -12,6 +12,8 @@ page-home {
     }
 
     .start_button{
+        background-color: color($colors,primary);
+        font-size: 1.6rem;
         display: block;
         width: 100px;
         text-align: center; 
