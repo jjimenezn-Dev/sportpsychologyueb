@@ -16,6 +16,11 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { ConfigServiceProvider } from '../providers/config-service/config-service';
 import { HttpClientModule } from '@angular/common/http';
 
+import { FIREBASE_CONFIG } from './app.firebase.config';
+import { AngularFireModule } from "angularfire2";
+import { AngularFireAuthModule } from "angularfire2/auth";
+import { AngularFireDatabaseModule } from "angularfire2/database";
+
 @NgModule({
   declarations: [
     MyApp,
@@ -29,6 +34,9 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
     HttpClientModule
   ],
   bootstrap: [IonicApp],

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CardiacPage } from '../cardiac/cardiac';
+import { AngularFireDatabase } from "angularfire2/database";
 import leaflet from 'leaflet';
 
 declare let L: any;
@@ -34,7 +35,9 @@ export class SportActivityPage {
   maxTime: any = 0;
   hidevalue: any = true;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    private database: AngularFireDatabase) {
     // this.timer = 0;
   }
 
