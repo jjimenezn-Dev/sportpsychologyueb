@@ -1,5 +1,6 @@
 export interface PersonaItem {
     altura: string,
+    peso: string,
     apellidos: string,
     carrera: string,
     cedula: number,

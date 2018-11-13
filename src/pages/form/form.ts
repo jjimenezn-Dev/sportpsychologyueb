@@ -69,6 +69,10 @@ export class FormPage {
       this.configService.showToast2("altura incorrecta", "toast-failed");
       return false;
     }
+    if(!this.persona.peso || this.persona.peso == ""  || this.persona.peso.length > 5){
+      this.configService.showToast2("peso incorrecto", "toast-failed");
+      return false;
+    }
     if(!this.persona.edad || this.persona.edad > 100){
       this.configService.showToast2("edad incorrecta", "toast-failed");
       return false;

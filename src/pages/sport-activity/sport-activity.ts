@@ -166,6 +166,7 @@ export class SportActivityPage {
         if(this.activity.bike)
           this.actividad_fisica.tipo_actividad = "BICICLETA";
         this.actividad_fisica.velocidad = this.velProm();
+        this.actividad_fisica.altitud = this.altProm();
 
         this.refActividad.push(this.actividad_fisica);
       });
@@ -216,6 +217,19 @@ export class SportActivityPage {
       return total / this.recorrido.length;
     return total;
   }
+
+
+  altProm(){
+    let total = 0;
+    for(let e of this.recorrido){
+      if(e.alt)
+        total += e.alt
+    }
+    if (total > 0)
+      return total / this.recorrido.length;
+    return total;
+  }
+
 
   getDistance(origin, destination) {
     // return distance in meters

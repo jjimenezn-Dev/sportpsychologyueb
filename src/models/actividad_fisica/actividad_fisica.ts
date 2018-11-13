@@ -7,4 +7,5 @@ export interface ActividadItem {
     persona: string,
     tipo_actividad: string,
     velocidad: number,
+    altitud: number,
 }
