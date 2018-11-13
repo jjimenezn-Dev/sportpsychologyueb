@@ -6,4 +6,3 @@ export const FIREBASE_CONFIG = {
     storageBucket: "sport-psychology.appspot.com",
     messagingSenderId: "391756264916"
   };
-;

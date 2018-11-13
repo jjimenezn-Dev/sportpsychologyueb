@@ -16,19 +16,25 @@
 <ion-content padding>
   <div class="form_container">
     <ion-item class="form_element">
-      <ion-input [(ngModel)]="persona.nombre" type="text" placeholder="Nombre"></ion-input>
+      <ion-input [(ngModel)]="persona.nombres" type="text" placeholder="Nombres"></ion-input>
+    </ion-item>
+    <ion-item class="form_element">
+      <ion-input [(ngModel)]="persona.apellidos" type="text" placeholder="Apellidos"></ion-input>
     </ion-item>
     <ion-item class="form_select">
-      <ion-label floating>Carrera</ion-label>
-      <ion-select [(ngModel)]="persona.carrera">
+      <ion-label floating>Facultad</ion-label>
+      <ion-select [(ngModel)]="persona.facultad">
         <ion-option value="Ingenieria">Ingenieria</ion-option>
         <ion-option value="Psicologia">Psicologia</ion-option>
       </ion-select>
     </ion-item>
     <ion-item class="form_element">
-      <ion-input [(ngModel)]="persona.altura" type="text" placeholder="Altura"></ion-input>
+      <ion-input [(ngModel)]="persona.carrera" type="text" placeholder="Carrera"></ion-input>
     </ion-item>
     <ion-item class="form_element">
+      <ion-input [(ngModel)]="persona.altura" type="text" placeholder="Altura"></ion-input>
+    </ion-item>
+    <ion-item type="number" class="form_element">
       <ion-input [(ngModel)]="persona.edad" type="text" placeholder="Edad"></ion-input>
     </ion-item>
     <ion-item class="form_select">

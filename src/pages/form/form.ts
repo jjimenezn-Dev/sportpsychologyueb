@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ScoreBoardPage } from '../score-board/score-board';
+import { AngularFireDatabase, AngularFireList } from "angularfire2/database"; 
 
-/**
- * Generated class for the FormPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { PersonaItem } from '../../models/persona-item/persona-item';
+import { ConfigServiceProvider } from '../../providers/config-service/config-service';
+import { flattenStyles } from '@angular/platform-browser/src/dom/dom_renderer';
 
 @IonicPage()
 @Component({
@@ -15,23 +13,70 @@ import { ScoreBoardPage } from '../score-board/score-board';
   templateUrl: 'form.html',
 })
 export class FormPage {
-  persona: any= {
-    nombre: "",
-    carrera: "",
-    altura: "",
-    edad: "",
-    genero: "",
+  persona = {} as PersonaItem; 
+  refPersona: any;
 
-  }
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    private database: AngularFireDatabase,
+    public configService: ConfigServiceProvider){
+
+      this.refPersona = database.list("Usuario_mobil");
+      console.log("Ref persona ---",this.refPersona);
+      
+      if(this.navParams.data['cedula']){
+        this.persona.cedula = Number(this.navParams.data['cedula']);
+      }
+      this.persona.puntos = 0;
+    }
+
 
   openScoreBoard(){
-    this.navCtrl.setRoot(ScoreBoardPage);
+    if (this.validateFields()){
+      this.addPersona();
+      this.navCtrl.setRoot(ScoreBoardPage, {"persona":this.persona});
+    }
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FormPage');
+
+  addPersona(){
+    this.refPersona.push(this.persona);
   }
 
+
+  validateFields(){
+    if(!this.persona.cedula || this.persona.cedula == 0){
+      this.configService.showToast2("cedula incorrecta", "toast-failed");
+      return false;
+    }
+    if(!this.persona.nombres || this.persona.nombres == "" || this.persona.nombres.length > 100){
+      this.configService.showToast2("nombres incorrectos", "toast-failed");
+      return false;
+    }
+    if(!this.persona.apellidos || this.persona.apellidos == ""  || this.persona.apellidos.length > 100){
+      this.configService.showToast2("apellidos incorrectos", "toast-failed");
+      return false;
+    }
+    if(!this.persona.facultad || this.persona.facultad == ""){
+      this.configService.showToast2("facultad incorrecta", "toast-failed");
+      return false;
+    }
+    if(!this.persona.carrera || this.persona.carrera == ""){
+      this.configService.showToast2("carrera incorrecta", "toast-failed");
+      return false;
+    }
+    if(!this.persona.altura || this.persona.altura == ""  || this.persona.altura.length > 5){
+      this.configService.showToast2("altura incorrecta", "toast-failed");
+      return false;
+    }
+    if(!this.persona.edad || this.persona.edad > 100){
+      this.configService.showToast2("edad incorrecta", "toast-failed");
+      return false;
+    }
+    if(!this.persona.genero || this.persona.genero == "" ){
+      this.configService.showToast2("genero incorrecto", "toast-failed");
+      return false;
+    }
+    return true;
+  }
 }

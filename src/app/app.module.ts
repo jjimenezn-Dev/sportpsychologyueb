@@ -20,6 +20,7 @@ import { FIREBASE_CONFIG } from './app.firebase.config';
 import { AngularFireModule } from "angularfire2";
 import { AngularFireAuthModule } from "angularfire2/auth";
 import { AngularFireDatabaseModule } from "angularfire2/database";
+import { ItemsProvider } from '../providers/items/items';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { AngularFireDatabaseModule } from "angularfire2/database";
     SplashScreen,
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ConfigServiceProvider
+    ConfigServiceProvider,
+    ItemsProvider,
   ]
 })
 export class AppModule {}
