@@ -42,7 +42,7 @@ export class HomePage {
         return;
       }
     }
-    this.navCtrl.setRoot(FormPage);
+    this.navCtrl.setRoot(FormPage, {cedula:this.person_id});
   }
   
 
