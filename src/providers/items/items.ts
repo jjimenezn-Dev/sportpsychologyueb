@@ -29,6 +29,14 @@ export class ItemsProvider {
     this.itemsList2 = [];
   }
 
+  facByName(name){
+    for(let elem of this.itemsList2){
+      if(name == elem.value.nombre)
+        return elem.value;
+    }
+    return 0;
+  }
+
   getKeyByCc(cc){
     for(let elem of this.itemsList){
       if(elem.value.cedula == cc)

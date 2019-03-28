@@ -8,16 +8,16 @@
   <div class="fecha" *ngIf="today">{{today.getDate()}} / {{months[today.getMonth()]}} / {{today.getFullYear()}}</div>
   
   <ion-row>
-    <ion-col col-6>
+    <ion-col col-8>
       <div class="scores">
         <div class="score" *ngFor="let fac of facultades">
           <p>{{fac.nombre}} ............ {{fac.score}}</p>
         </div>
       </div>
     </ion-col>
-    <ion-col col-6>
+    <ion-col col-4>
       <div class="perfil">
-        <img *ngIf="user.genero == 'Maculino'" src="../assets/imgs/guy.png" alt="">
+        <img *ngIf="user.genero == 'Masculino'" src="../assets/imgs/guy.png" alt="">
         <img *ngIf="user.genero == 'Femenino'" src="../assets/imgs/girl.png" alt="">
       </div>
     </ion-col>
@@ -26,7 +26,7 @@
   <div class="own">
     <ion-row>
       <ion-col col-6>
-        <div class="myFactultyPoints"><span>Puntaje mi facultad: </span>{{user.facultad.score}}</div>  
+        <div *ngIf="user.facultad && user.facultad.puntos" class="myFactultyPoints"><span>Puntaje mi facultad: </span>{{user.facultad.puntos}}</div>  
       </ion-col>
       <ion-col col-6>
         <div class="ownPoints"><span>Mi puntaje: </span>{{user.score}}</div>
@@ -37,5 +37,6 @@
   <div class="buttons">
       <button class="start_button" (click)="openActivity()">Realizar actividad fisica</button>
       <button class="start_button" (click)="openCardiac()">Medir Ritmo Cardiaco</button>
+      <button class="start_button" (click)="end()">Finalizar</button>
   </div>
 </ion-content>

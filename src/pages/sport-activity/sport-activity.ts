@@ -282,4 +282,11 @@ export class SportActivityPage {
       else
         return  '0' + minutes + ':' + '0' + (value - minutes * 60);
  }
+
+ volver(){
+   if(this.actividad == "Pausar Actividad"){
+    this.startActivity(false)
+   }
+   this.navCtrl.pop();
+ }
 }

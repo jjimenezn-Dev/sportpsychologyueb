@@ -16,8 +16,11 @@ page-sport-activity {
         display: block;
         margin: 0% auto;
         p{
+            padding: 8px;
+            background-color:  color($colors,light);
+            box-shadow: inset 0 2px 0 rgba(255,255,255,0.5), 0 3px 3px rgba(0, 0, 0, 0.29);
             font-family: alarm_clock !important;
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: bolder;
         }
     }
@@ -35,7 +38,7 @@ page-sport-activity {
     .map{
         // margin-top: 50px;
         width:100%;
-        height:65%;
+        height:60%;
     }
     .start_button{
         border-radius: 0;
@@ -58,10 +61,10 @@ page-sport-activity {
         vertical-align: middle;
         overflow: hidden;
         font-weight: bold;
-        background-image: -webkit-linear-gradient(#7dbe4b 0%, #7dbe4b 40%);
-        background-image: linear-gradient(#7dbe4b 0%, #32db64 100%);
+        background-image: -webkit-linear-gradient(color($colors,light) 0%, color($colors,light) 40%);
+        background-image: linear-gradient(color($colors,light) 0%, color($colors,light) 100%);
         text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
-        box-shadow: inset 0 2px 0 rgba(255,255,255,0.5), 0 3px 3px rgba(0, 0, 0, 0.29);
+        box-shadow: inset 0 2px 0 rgba(255,255,255,0.5), 0 3px 3px rgba(0, 0, 0, 0.49);
         border-bottom: solid 2px #b5b5b5;
         display: block;
         margin: 10% auto;

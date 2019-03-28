@@ -6,6 +6,7 @@ import { CardiacPage } from '../cardiac/cardiac';
 import { ConfigServiceProvider } from '../../providers/config-service/config-service';
 import { ItemsProvider } from '../../providers/items/items';
 import { AngularFireDatabase, AngularFireList } from "angularfire2/database"; 
+import { HomePage } from '../home/home';
 
 
 @IonicPage()
@@ -17,15 +18,12 @@ export class ScoreBoardPage {
   today:any;
   user:any = {
     nombre: "",
-    facultad: {id:2, nombre:"Psicologia", score:50},
+    facultad: {},
     score: 0,
     genero: ""
   }
-  facultades:any[] = [
-    {id:1, nombre:"Ingeniería de Sistemas", score:100},
-    {id:2, nombre:"Psicologia", score:50},
-    {id:3, nombre:"Biologia", score:10},
-  ];
+  facultad:any;
+  facultades:any[] = [];
   months = [ "Ene", "Feb", "Mar", "Abr", "May", "Jun",
     "Jul", "Ago", "Sep", "Oct", "Nov", "Dic" ];
   constructor(public navCtrl: NavController, 
@@ -35,13 +33,16 @@ export class ScoreBoardPage {
     private database: AngularFireDatabase,
     ) {
       if(navParams.data['persona']){
-        
+        this.facultad = navParams.data['persona'].facultad;
         this.user.nombre = navParams.data['persona'].nombres + " " + navParams.data['persona'].apellidos;
         this.user.score = navParams.data['persona'].puntos;
         this.user.genero = navParams.data['persona'].genero;
         
       }
       console.log(this.user);
+      this.loadFacultades().then(()=>{
+        this.topFacultades();
+      });
   }
 
   ionViewDidLoad() {  
@@ -63,24 +64,51 @@ export class ScoreBoardPage {
   }
 
 
+  topFacultades(){
+    for (let index = this.itemsService.itemsList2.length-1; index !=  (this.itemsService.itemsList2.length - 4); index--) {
+      let elem = {
+        id: this.itemsService.itemsList2[index].value.id, 
+        nombre:this.itemsService.itemsList2[index].value.nombre, 
+        score:this.itemsService.itemsList2[index].value.puntos
+      }
+      this.facultades.push(elem);
+    }
+    this.user.facultad = this.itemsService.facByName(this.facultad);
+    console.log('Usuario final:' + this.user);
+    
+    
+  }
+
 
   async loadFacultades(){
-    try {
-      var usersRef = this.database.database.ref("Facultad");
-      usersRef.orderByChild('id').once("value").then(snapshot => {
-        this.itemsService.clear();
-        snapshot.forEach(element => {
-          let item = {
-            key: element.key,
-            value: element.val()
-          }
-          this.itemsService.itemsAdd(item);
+    return new Promise((resolve,reject)=>{
+      try {
+        var usersRef = this.database.database.ref("Facultad");
+        usersRef.orderByChild('puntos').once("value").then(snapshot => {
+          this.itemsService.clear2();
+          snapshot.forEach(element => {
+            let item = {
+              key: element.key,
+              value: element.val()
+            }
+            this.itemsService.itemsAdd2(item);
+          });
+          return resolve(snapshot);
         });
-        console.log("facultades:",this.itemsService.itemsList);
+      } catch (err) {
+        return reject(err);
+        console.log("nextPage() error>", err);
+      }
+    });
+  }
 
-      });
-    } catch (err) {
-      console.log("nextPage() error>", err);
-    }
+
+  openMessage(){
+
+  }
+
+  end(){
+    this.openMessage();
+    this.navCtrl.setRoot(HomePage);
   }
 }

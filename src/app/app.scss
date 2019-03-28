@@ -1,7 +1,8 @@
 @font-face {
-  font-family: alarm_clock;
-  src: url("../assets/fonts/alarm clock.ttf") format("ttf");
-  font-weight: 200
+  font-family: "alarm_clock";
+  src: url("../assets/fonts/alarm_clock.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 .toast-success {
     > div{
