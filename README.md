@@ -10,3 +10,7 @@ Sistema de administración y gestión de información para la medición de activ
     3. Ejecutar el comando de "npm i"
     4. Correr el programa con el comando "ionic serve"
     5. Listo!
+
+#Como configurar JAVA_HOME
+    https://tecadmin.net/install-oracle-java-8-ubuntu-via-ppa/
+

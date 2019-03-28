@@ -1,17 +1,12 @@
-<ion-header>
-  <ion-navbar color='primary'>
-    <ion-title>
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
+<ion-content class="fondo" padding>
+  <img src="../assets/imgs/UEBlogo.png" alt="UEB" class="logo">
   <div class="form_container">
-    <h1 class="tittle_big">
-      Bienvenido
+    <h1 color='dark' class="tittle_big">
+      Sport Psicology
     </h1>
-    <ion-item>
-      <ion-input [(ngModel)]="person_id" type="number" placeholder="Cedula"></ion-input>
+    <ion-item class="cedula">
+      <ion-label color='dark' position="stacked">Cedula</ion-label>
+      <ion-input [(ngModel)]="person_id" type="number" ></ion-input>
     </ion-item>
     <button class="start_button" (click)="start()">Empezar</button>
   </div>

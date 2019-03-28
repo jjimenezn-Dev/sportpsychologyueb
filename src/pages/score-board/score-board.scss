@@ -1,35 +1,63 @@
 page-score-board {   
     .fecha{
-        text-align: right;
-    } 
+        border-radius: 25px 25px 0 0;
+        background-color: color($colors,primary);
+        text-align: center;
+        padding: 5px;
+        color: white;
+        font-weight: bold;
+    }
+    .title{
+        text-align: center;
+        padding: 15px;
+        color: color($colors,orange);
+        h3{
+            font-size: 2.5em!important;
+        }
+    }
+    .fac{
+        text-align: center;
+    }
     .tittle_big{
         padding: 20px;
         text-align: center;
     }
+
+    .buttons{
+        margin-top: 20%;
+    }
+
     .start_button{
-        display: block;
-        text-align: center; 
-        margin: auto;
-        padding: 25px;
-        margin-top: 30px;
         width: 70%;
     }
 
     .scores{
-        padding: 10px 40px;
-        box-shadow: 1px 2px #000;
+        padding: 10px 10px;
         border-width: 0.5px;
-        border-style: solid;
-        
+    }
+
+    .perfil{
+        text-align: right;
+        padding: 10px 10px;
+        border-width: 0.5px;
     }
 
     .score{
-        text-align: right;
+        text-align: left;
         padding: 5px;
     }
 
-    .own{
-        padding: 10px;
+    .ownPoints{
         text-align: center;
     }
+
+    .own{
+        border-radius: 0 0 25px 25px;
+        background-color: color($colors,primary);
+        text-align: center;
+        padding: 5px;
+        color: white;
+        font-weight: bold;
+    }
+
 }

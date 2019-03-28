@@ -4,9 +4,12 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ItemsProvider {
   public itemsList:any;
+  public itemsList2:any;
   constructor(public http: HttpClient) {
+    // usuarios mobile
     this.itemsList = [];
-    console.log('Hello ItemsProvider Provider');
+    // facultades
+    this.itemsList2 = [];
   }
 
   itemsAdd(item){
@@ -15,6 +18,15 @@ export class ItemsProvider {
 
   clear(){
     this.itemsList = [];
+  }
+
+
+  itemsAdd2(item){
+    this.itemsList2.push(item);
+  }
+
+  clear2(){
+    this.itemsList2 = [];
   }
 
   getKeyByCc(cc){

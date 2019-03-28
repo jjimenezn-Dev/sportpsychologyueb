@@ -1,33 +1,77 @@
 page-sport-activity {
+    .tittle{
+        text-align: center;
+        padding: 15px;
+        color: color($colors,orange);
+        h3{
+            font-size: 2.5em!important;
+        }
+    }
+    .activity-button{
+        text-align: center;
+    }
     .icon_time{
         text-align: center;
-        font-size: 25px;
+        padding: 0px;
+        display: block;
+        margin: 0% auto;
         p{
-            font-size: 12px;
+            font-family: alarm_clock !important;
+            font-size: 4rem;
+            font-weight: bolder;
         }
     }
     .icon_mode ion-icon{
-        text-align: center;
         padding: 15px;
-        font-size: 40px;
+        font-size: 30px;
         p{    
             font-size: 12px;
         }
     }
     .icon-selected{
-        background-color: aqua;
+        color:color($colors,orange);// rgba(125, 190, 75, 1);/*IconColor*/
     }
-    .icon-nonselected{
-        background-color: none;
-    }
+
     .map{
         // margin-top: 50px;
         width:100%;
-        height:50%;
+        height:65%;
     }
     .start_button{
+        border-radius: 0;
         width: 100%;
-        height: 40px;
-        padding: 3px;
+        height: 100%;
+        margin: 0px 0;
+    }
+    
+    ///////////////
+
+    .btn{
+        text-decoration: none;
+        color: rgba(152, 152, 152, 0.43);/*IconColor*/
+        width: 80px;
+        height: 80px;
+        line-height: 80px;
+        font-size: 40px;
+        border-radius: 50%;
+        text-align: center;
+        vertical-align: middle;
+        overflow: hidden;
+        font-weight: bold;
+        background-image: -webkit-linear-gradient(#7dbe4b 0%, #7dbe4b 40%);
+        background-image: linear-gradient(#7dbe4b 0%, #32db64 100%);
+        text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+        box-shadow: inset 0 2px 0 rgba(255,255,255,0.5), 0 3px 3px rgba(0, 0, 0, 0.29);
+        border-bottom: solid 2px #b5b5b5;
+        display: block;
+        margin: 10% auto;
+    }
+    .btn .fa {
+        line-height: 80px;
+    }
+    .btn:active {/*onClick*/
+        background-image: -webkit-linear-gradient(#efefef 0%, #d6d6d6 100%);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 2px 2px rgba(0, 0, 0, 0.19);
+        border-bottom: none;
     }
 }

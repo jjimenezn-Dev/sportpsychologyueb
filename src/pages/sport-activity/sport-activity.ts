@@ -196,11 +196,15 @@ export class SportActivityPage {
   calcDistancia(){
     return new Promise((resolve, reject) => {
       let dist = 0;
-      for(let i in this.recorrido){
-        if(this.recorrido[i] != this.recorrido[this.recorrido.length-1] && this.recorrido.length > 1){
-          dist += this.getDistance(this.recorrido[i], this.recorrido[parseInt(i)+1]);
+      if (this.recorrido.length > 1){
+        for(let i in this.recorrido){
+          console.log(i + '---!');
+          if(parseInt(i) > 1  && this.recorrido[i] != this.recorrido[this.recorrido.length-1]){
+            dist += this.getDistanceFromLatLonInKm(this.recorrido[parseInt(i)-1].lat, this.recorrido[parseInt(i)-1].lng, this.recorrido[i].lat, this.recorrido[i].lng);
+          }
         }
       }
+      
       this.actividad_fisica.distancia = dist;
       return resolve(1);
     });
@@ -247,4 +251,35 @@ export class SportActivityPage {
     return c * EARTH_RADIUS * 1000;
   }
 
+  getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+    var R = 6371; // Radius of the earth in km
+    var dLat = this.deg2rad(lat2-lat1);  // deg2rad below
+    var dLon = this.deg2rad(lon2-lon1); 
+    var a = 
+      Math.sin(dLat/2) * Math.sin(dLat/2) +
+      Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) * 
+      Math.sin(dLon/2) * Math.sin(dLon/2)
+      ; 
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+    var d = R * c; // Distance in km
+    return d;
+  }
+  
+  deg2rad(deg) {
+    return deg * (Math.PI/180)
+  }
+
+  transform(value: number): string {
+    const minutes: number = Math.floor(value / 60);
+    if(minutes > 9)
+      if((value - minutes * 60) > 9)
+        return minutes + ':' + (value - minutes * 60);
+      else
+        return  minutes + ':' + '0' + (value - minutes * 60);
+    else
+      if((value - minutes * 60) > 9)
+        return '0' + minutes + ':' + (value - minutes * 60);
+      else
+        return  '0' + minutes + ':' + '0' + (value - minutes * 60);
+ }
 }

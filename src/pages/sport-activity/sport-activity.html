@@ -1,41 +1,34 @@
-<!--
-  Generated template for the SportActivityPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>sport-activity</ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
+<ion-content>
+  <div class="tittle">
+    <h3>Actividad Fisica</h3>
+  </div>
   <ion-row>
-    <ion-col col-12 class="icon_time">
-      <ion-icon name="time"></ion-icon>
-      <p>{{maxTime}}</p>
+    <ion-col class="icon_mode" col-4>
+        <div class="activity-button"></div>
+      <a (click)="selecIcon('walk')" class="btn">
+        <ion-icon [ngClass]="{'icon-selected' : activity.walk, 'icon-nonselect': !activity.walk}" name="walk">
+        </ion-icon> 
+      </a>
     </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col col-3></ion-col>
-    <ion-col class="icon_mode" col-3>
-      <ion-icon name="walk" [ngClass]="{'icon-selected' : activity.walk, 'icon-nonselect': !activity.walk}" (click)="selecIcon('walk')">
-        <p>15km</p>
-      </ion-icon>
+    <ion-col col-4 class="icon_time">
+      <div >
+        <!--ion-icon name="time"></ion-icon-->
+        <p class="activity-timer">{{transform(maxTime)}}</p>
+      </div>
     </ion-col>
-    <ion-col class="icon_mode" col-3>
-      <ion-icon name="bicycle" [ngClass]="{'icon-selected' : activity.bike ,'icon-nonselect': !activity.bike}" (click)="selecIcon('bike')">
-        <p>0km</p>
-      </ion-icon>
+    <ion-col class="icon_mode" col-4>
+      <div class="activity-button">
+        <a (click)="selecIcon('bike')" class="btn">
+          <ion-icon [ngClass]="{'icon-selected' : activity.bike ,'icon-nonselect': !activity.bike}" name="bicycle">
+          </ion-icon> 
+        </a>
+      </div>
     </ion-col>
-    <ion-col col-3></ion-col>
   </ion-row>
 
   <div class="map" id="map"></div>
 
-  <ion-row>
+  <ion-row class="buttons">
     <ion-col col-6>
       <button class="start_button" (click)="openCardiac()">Medir Ritmo Cardiaco</button>
     </ion-col>

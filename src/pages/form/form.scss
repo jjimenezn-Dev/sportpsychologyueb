@@ -1,21 +1,29 @@
 page-form {
+    ion-content{
+    }
+    ion-label{
+    }
+    .form_container{
+    }
+    .title{
+        text-align: center;
+        padding: 15px;
+        color: color($colors,orange);
+        h3{
+            font-size: 2.5em!important;
+        }
+    }
     .form_element{
         margin-top: 15px;
         padding: 8px;
+        background-color: rgba(0,0,0,0);
+        color: black!important;
     }
 
     .form_select{
-        margin-left: -5px;
+        margin-left: 0px;
         margin-top: -5px;
-    }
-
-    .start_button{
-        display: block;
-        width: 100px;
-        text-align: center; 
-        margin: auto;
-        padding: 25px;
-        margin-top: 30px;
-        width: 50%;
+        background-color: rgba(0,0,0,0);
+        color: black!important;
     }
 }

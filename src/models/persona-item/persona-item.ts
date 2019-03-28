@@ -9,4 +9,5 @@ export interface PersonaItem {
     genero: string,
     nombres: string,
     puntos: number,
+    mensaje: string,
 }

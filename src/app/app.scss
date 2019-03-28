@@ -1,3 +1,8 @@
+@font-face {
+  font-family: alarm_clock;
+  src: url("../assets/fonts/alarm clock.ttf") format("ttf");
+  font-weight: 200
+}
 .toast-success {
     > div{
          background-color:#32db64!important;
@@ -9,3 +14,24 @@
          background-color:#f53d3d !important;
      }
   }
+
+  .start_button{
+    border-radius: 25px;
+    transition-duration: 0.4s;
+    background-color: color($colors,orange);
+    color: white; 
+    font-size: 1.6rem;
+    font-weight: bold;
+    display: block;
+    text-align: center; 
+    margin: auto;
+    padding: 15px 25px;
+    margin-top: 20px;
+    width: 50%;
+  }
+
+  .start_button:hover {
+    background-color: rgba(255,255,255,0.6);
+    color: color($colors,orange);
+    box-shadow: 0px 0px 1px 1px color($colors,orange);
+}

@@ -6,6 +6,7 @@ import { AngularFireDatabase, AngularFireList } from "angularfire2/database";
 import { PersonaItem } from '../../models/persona-item/persona-item';
 import { ConfigServiceProvider } from '../../providers/config-service/config-service';
 import { flattenStyles } from '@angular/platform-browser/src/dom/dom_renderer';
+import { ItemsProvider } from '../../providers/items/items';
 
 @IonicPage()
 @Component({
@@ -15,12 +16,40 @@ import { flattenStyles } from '@angular/platform-browser/src/dom/dom_renderer';
 export class FormPage {
   persona = {} as PersonaItem; 
   refPersona: any;
+  refFacultad: any;
+  facultades = ['Creación y Comunicación',
+    'Docencia',
+    'Medicina',
+    'Odontología',
+    'Ciencias',
+    'Enfermería',
+    'Humanidades',
+    'Educación',
+    'Psicología',
+    'Ciencias Económicas y Administrativas',
+    'Ingeniería',
+    'Ciencias Políticas y Jurídicas',
+    // Si existen mas facultades agregar a partir de aca ...
+  ]
+
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     private database: AngularFireDatabase,
-    public configService: ConfigServiceProvider){
-
+    public configService: ConfigServiceProvider,
+    public itemsService: ItemsProvider){
+      /* codigo para rellenar facultades 
+      this.refFacultad = database.list("Facultad");
+      for (let index = 0; index < this.facultades.length; index++) {
+        let elem = {
+          'id': index,
+          'nombre':this.facultades[index], 
+          'posicion': 0,
+          'puntos':0
+        };     
+        this.refFacultad.push(elem); 
+      }
+      */
       this.refPersona = database.list("Usuario_mobil");
       console.log("Ref persona ---",this.refPersona);
       
@@ -28,6 +57,7 @@ export class FormPage {
         this.persona.cedula = Number(this.navParams.data['cedula']);
       }
       this.persona.puntos = 0;
+      this.persona.mensaje = "";
     }
 
 
