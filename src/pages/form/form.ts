@@ -17,6 +17,8 @@ export class FormPage {
   persona = {} as PersonaItem; 
   refPersona: any;
   refFacultad: any;
+  altura1: Number;
+  altura2: Number;
   facultades = ['Creación y Comunicación',
     'Docencia',
     'Medicina',
@@ -95,11 +97,13 @@ export class FormPage {
       this.configService.showToast2("carrera incorrecta", "toast-failed");
       return false;
     }
-    if(!this.persona.altura || this.persona.altura == ""  || this.persona.altura.length > 5){
+    this.persona.altura = this.altura1 + "." + this.altura2 +"m"
+    if(!this.altura1 || !this.altura2 || this.persona.altura == ".m"){
       this.configService.showToast2("altura incorrecta", "toast-failed");
       return false;
     }
-    if(!this.persona.peso || this.persona.peso == ""  || this.persona.peso.length > 5){
+    this.persona.peso = this.persona.peso + ' Kg';
+    if(!this.persona.peso || this.persona.peso == " Kg"){
       this.configService.showToast2("peso incorrecto", "toast-failed");
       return false;
     }

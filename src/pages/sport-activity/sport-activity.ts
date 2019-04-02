@@ -27,6 +27,8 @@ export class SportActivityPage {
   lng = -74.05835908984375;
   map_zoom = 7;
 
+  myPosition: any;
+
   //[0]lat  [1]lng
   recorrido:any[] = [];
   polyline:any;
@@ -89,12 +91,13 @@ export class SportActivityPage {
       setView: true,
       maxZoom: 36
     }).on('locationfound', (e) => {
-      let markerGroup = leaflet.featureGroup();
-      let marker: any = leaflet.marker([e.latitude, e.longitude]).on('click', () => {
-        alert('Marker clicked');
-      })
-      markerGroup.addLayer(marker);
-      this.map.addLayer(markerGroup);
+      this.myPosition = leaflet.featureGroup();
+      let myPosition = leaflet.marker([e.latitude, e.longitude]).on('click', () => {
+        alert('Esta es mi posición!');
+      });
+      this.myPosition.addLayer(myPosition);
+      this.map.addLayer(this.myPosition);
+      this.map.dragging.disable();
     }).on('locationerror', (err) => {
       alert(err.message);
     })
@@ -154,7 +157,8 @@ export class SportActivityPage {
         this.recorridoMapa();
         console.log(this.recorrido);
         this.startActivity(false);
-      }, 50000);
+        //Tiempo de espera
+      }, 3000);
     }
     else{
       this.calcDistancia().then(() => {
@@ -180,8 +184,18 @@ export class SportActivityPage {
       weight: 3,
       opacity: 0.5,
       smoothFactor: 1
-  });
-  this.polyline.addTo(this.map);
+    });
+    this.polyline.addTo(this.map);
+    if (this.recorrido.length > 0){
+      this.map.removeLayer(this.myPosition);
+      this.myPosition = leaflet.featureGroup();
+      let myPosition = leaflet.marker([this.recorrido[this.recorrido.length-1].lat, this.recorrido[this.recorrido.length-1].lng]).on('click', () => {
+        alert('Esta es mi posición!');
+      });
+      this.myPosition.addLayer(myPosition);
+      this.map.addLayer(this.myPosition);
+      this.map.fitBounds(this.myPosition.getBounds());
+    }
   }
 
   openCardiac() {

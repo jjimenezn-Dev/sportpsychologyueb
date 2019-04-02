@@ -97,7 +97,7 @@ export class ScoreBoardPage {
         });
       } catch (err) {
         return reject(err);
-        console.log("nextPage() error>", err);
+        // console.log("nextPage() error>", err);
       }
     });
   }

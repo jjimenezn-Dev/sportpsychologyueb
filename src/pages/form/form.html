@@ -18,14 +18,30 @@
     <ion-item class="form_element">
       <ion-input [(ngModel)]="persona.carrera" type="text" placeholder="Carrera"></ion-input>
     </ion-item>
+    <ion-row>
+      <ion-col col-5>
+        <ion-item class="form_element">
+          <ion-input class="altura1" [(ngModel)]="altura1" type="tel" maxlength='2' placeholder="Altura"></ion-input>
+        </ion-item> 
+      </ion-col>
+      <ion-col col-1><p class="dotAndKg">.</p></ion-col>
+      <ion-col col-5>
+        <ion-item class="form_element">
+          <ion-input class="altura2" [(ngModel)]="altura2" type="tel" maxlength='2' placeholder="Altura"></ion-input>
+        </ion-item>   
+      </ion-col>
+      <ion-col col-1><p class="dotAndKg">m</p></ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+          <ion-item class="form_element">
+              <ion-input [(ngModel)]="persona.peso" type="tel" maxlength='3' placeholder="Peso"></ion-input>
+            </ion-item>
+        </ion-col>
+        <ion-col col-1><p class="dotAndKg">Kg</p></ion-col>
+      </ion-row>
     <ion-item class="form_element">
-      <ion-input [(ngModel)]="persona.altura" type="text" placeholder="Altura"></ion-input>
-    </ion-item>
-    <ion-item class="form_element">
-      <ion-input [(ngModel)]="persona.peso" type="text" placeholder="Peso"></ion-input>
-    </ion-item>
-    <ion-item type="number" class="form_element">
-      <ion-input [(ngModel)]="persona.edad" type="text" placeholder="Edad"></ion-input>
+      <ion-input [(ngModel)]="persona.edad" type="tel" maxlength='2' placeholder="Edad"></ion-input>
     </ion-item>
     <ion-item class="form_select">
       <ion-label floating>Genero</ion-label>
