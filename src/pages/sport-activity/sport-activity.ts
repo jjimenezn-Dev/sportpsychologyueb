@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, AlertController } from 'ionic-angular';
 import { CardiacPage } from '../cardiac/cardiac';
 import { AngularFireDatabase } from "angularfire2/database";
 import { Geolocation } from "@ionic-native/geolocation"
@@ -45,12 +45,15 @@ export class SportActivityPage {
     public navParams: NavParams,
     private database: AngularFireDatabase,
     private geo: Geolocation,
-    private platform: Platform) {
+    private platform: Platform,
+    public alertController: AlertController) {
 
       this.refActividad = this.database.list("Atividad_fisica");
       console.log("Ref actividad ---",this.refActividad);
 
-      if(this.navParams.data['persona']){
+      if(this.navParams.data){
+        console.log(this.navParams.data['persona']);
+        
         this.actividad_fisica.persona = this.navParams.data['persona'];
       }
   }
@@ -172,6 +175,7 @@ export class SportActivityPage {
         this.actividad_fisica.velocidad = this.velProm();
         this.actividad_fisica.altitud = this.altProm();
 
+        this.presentAlertConfirm();
         this.refActividad.push(this.actividad_fisica);
       });
     }
@@ -303,4 +307,34 @@ export class SportActivityPage {
    }
    this.navCtrl.pop();
  }
+
+ async presentAlertConfirm() {
+   let act_message = 
+    '</br>Fecha: ' + this.actividad_fisica.Fecha +
+    '</br>Tiempo:  ' + this.actividad_fisica.Tiempo +
+    '</br>distancia:  ' + this.actividad_fisica.distancia +
+    '</br>pasos:  ' + this.actividad_fisica.pasos +
+    '</br>tipo de actividad:  Actividad realizada a ' + this.actividad_fisica.tipo_actividad.toLowerCase() +
+    '</br>velocidad:  ' + this.actividad_fisica.velocidad +
+    '</br>altitud:  ' + this.actividad_fisica.altitud;
+    
+  const alert = await this.alertController.create({
+    title: 'Actividad finalizada!',
+    message: act_message,
+    buttons: [
+      {
+        handler: (blah) => {
+          console.log('Confirm Cancel: blah');
+        }
+      }, {
+        text: 'Continuar',
+        handler: () => {
+          this.navCtrl.pop();
+        }
+      }
+    ]
+  });
+
+  await alert.present();
+}
 }
