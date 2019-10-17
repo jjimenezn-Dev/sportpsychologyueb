@@ -8,4 +8,6 @@ export interface ActividadItem {
     tipo_actividad: string,
     velocidad: number,
     altitud: number,
+    calorias: number,
+    esfuerzo: number,
 }

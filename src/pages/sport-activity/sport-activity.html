@@ -1,8 +1,8 @@
 <ion-content>
-  <div class="tittle">
+  <!--div class="tittle">
     <h3>Actividad Fisica</h3>
-  </div>
-  <ion-row>
+  </div-->
+  <ion-row class="tittle">
     <ion-col class="icon_mode" col-4>
         <div class="activity-button"></div>
       <a (click)="selecIcon('walk')" class="btn">
@@ -25,6 +25,12 @@
       </div>
     </ion-col>
   </ion-row>
+  <div class="floating_toggle">
+    <ion-item>
+      <ion-label>Actividad estática</ion-label>
+      <ion-toggle color="danger" (ionChange)="onToggleChange()" [(ngModel)]="offlineAct"></ion-toggle>
+    </ion-item>
+  </div>
 
   <div class="map" id="map"></div>
 

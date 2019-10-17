@@ -22,6 +22,12 @@ import { AngularFireAuthModule } from "angularfire2/auth";
 import { AngularFireDatabaseModule } from "angularfire2/database";
 import { ItemsProvider } from '../providers/items/items';
 
+import { PubNubAngular } from 'pubnub-angular2';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { Flashlight } from '@ionic-native/flashlight';
+import { WeightChartPage } from '../pages/weight-chart/weight-chart';
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -31,6 +37,7 @@ import { ItemsProvider } from '../providers/items/items';
     FormPage,
     SportActivityPage,
     CardiacModalPage,
+    WeightChartPage,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +56,7 @@ import { ItemsProvider } from '../providers/items/items';
     FormPage,
     SportActivityPage,
     CardiacModalPage,
+    WeightChartPage,
   ],
   providers: [
     StatusBar,
@@ -57,6 +65,10 @@ import { ItemsProvider } from '../providers/items/items';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ConfigServiceProvider,
     ItemsProvider,
+    PubNubAngular,
+    BarcodeScanner,
+    Flashlight
+
   ]
 })
 export class AppModule {}

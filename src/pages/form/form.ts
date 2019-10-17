@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { ScoreBoardPage } from '../score-board/score-board';
 import { AngularFireDatabase, AngularFireList } from "angularfire2/database"; 
 
@@ -39,7 +39,8 @@ export class FormPage {
     public navParams: NavParams,
     private database: AngularFireDatabase,
     public configService: ConfigServiceProvider,
-    public itemsService: ItemsProvider){
+    public itemsService: ItemsProvider,
+    public alertController: AlertController,){
       /* codigo para rellenar facultades 
       this.refFacultad = database.list("Facultad");
       for (let index = 0; index < this.facultades.length; index++) {
@@ -72,13 +73,23 @@ export class FormPage {
 
 
   addPersona(){
+    //Indice de masa corporal
+    try {
+      this.persona.masaCorporal = '' + (parseFloat(this.persona.peso) / (parseFloat(this.persona.altura) * parseFloat(this.persona.altura))).toFixed(0);
+      
+    } catch (error) {
+      this.persona.masaCorporal = '';
+    }
+
     this.refPersona.push(this.persona);
+    let valAux = {value : this.persona}
+    this.itemsService.itemsAdd(valAux);
   }
 
 
   validateFields(){
     if(!this.persona.cedula || this.persona.cedula == 0){
-      this.configService.showToast2("cedula incorrecta", "toast-failed");
+      this.configService.showToast2("cédula incorrecta", "toast-failed");
       return false;
     }
     if(!this.persona.nombres || this.persona.nombres == "" || this.persona.nombres.length > 100){
@@ -93,17 +104,17 @@ export class FormPage {
       this.configService.showToast2("facultad incorrecta", "toast-failed");
       return false;
     }
-    if(!this.persona.carrera || this.persona.carrera == ""){
-      this.configService.showToast2("carrera incorrecta", "toast-failed");
+    if(!this.persona.semestre || this.persona.semestre == ""){
+      this.configService.showToast2("semestre incorrecto", "toast-failed");
       return false;
     }
-    this.persona.altura = this.altura1 + "." + this.altura2 +"m"
-    if(!this.altura1 || !this.altura2 || this.persona.altura == ".m"){
+    this.persona.altura = this.altura1 + "." + this.altura2 + "";
+    if(!this.altura1 || !this.altura2 || this.persona.altura == ""){
       this.configService.showToast2("altura incorrecta", "toast-failed");
       return false;
     }
-    this.persona.peso = this.persona.peso + ' Kg';
-    if(!this.persona.peso || this.persona.peso == " Kg"){
+    this.persona.peso = this.persona.peso + '';
+    if(!this.persona.peso || this.persona.peso == ""){
       this.configService.showToast2("peso incorrecto", "toast-failed");
       return false;
     }
@@ -112,9 +123,42 @@ export class FormPage {
       return false;
     }
     if(!this.persona.genero || this.persona.genero == "" ){
-      this.configService.showToast2("genero incorrecto", "toast-failed");
+      this.configService.showToast2("género incorrecto", "toast-failed");
       return false;
     }
     return true;
+  }
+
+  async onBlur(event){
+    if(!this.altura1 || !this.altura2 || !this.persona.peso)
+      return;
+
+    try {
+      let Imc:any = 0;
+      let altura = this.altura1 + "." + this.altura2;
+      Imc = (parseFloat(this.persona.peso)/(parseFloat(altura) * parseFloat(altura))).toFixed(0);
+
+      const alert = await this.alertController.create({
+        title: 'Índice de masa corporal:',
+        message: '' + Imc,
+        buttons: [
+          {
+            handler: () => {
+            }
+          }, {
+            text: 'Continuar',
+            handler: () => {
+              this.navCtrl.pop();
+            }
+          }
+        ]
+      });
+    
+      await alert.present();      
+    } catch (error) {
+      console.log(error);
+      
+    }
+
   }
 }

@@ -1,0 +1,23 @@
+page-weight-chart {
+    h1{
+        margin-top: 2rem;
+        font-size: 2.6rem;
+        text-align: center
+    }
+    .title {
+        color:  color($colors,orange);
+    }
+
+    .start_button{
+        margin-top: 2em;
+    }
+
+    .ion-padding{
+        margin-top: 2em;
+    }
+
+    .imc{
+        margin: 10px 3.5em;
+    width: 75%;
+    }
+}

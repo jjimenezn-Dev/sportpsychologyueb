@@ -1,8 +1,8 @@
 page-sport-activity {
     .tittle{
-        text-align: center;
-        padding: 15px;
-        color: color($colors,orange);
+        position: absolute;
+        z-index: 999;
+        min-width: 100%;
         h3{
             font-size: 2.5em!important;
         }
@@ -14,7 +14,7 @@ page-sport-activity {
         text-align: center;
         padding: 0px;
         display: block;
-        margin: 0% auto;
+        margin: 5% auto;
         p{
             padding: 8px;
             background-color:  color($colors,light);
@@ -27,54 +27,83 @@ page-sport-activity {
     .icon_mode ion-icon{
         padding: 15px;
         font-size: 30px;
+        color:rgb(149, 97, 0);
         p{    
             font-size: 12px;
         }
     }
     .icon-selected{
-        color:color($colors,orange);// rgba(125, 190, 75, 1);/*IconColor*/
+        color:color($colors,danger)!important;// rgba(125, 190, 75, 1);/*IconColor*/
     }
 
     .map{
         // margin-top: 50px;
         width:100%;
-        height:60%;
+        height:100%;
     }
     .start_button{
+        position: absolute;
+        z-index: 999;
         border-radius: 0;
-        width: 100%;
+        width: 95%;
         height: 100%;
         margin: 0px 0;
+        box-shadow: 1px 1px 15px #333;
+        border-radius: 30px;
     }
-    
+    .buttons{
+        position: absolute;
+        bottom: 20px;
+        width: 100%;
+        height: 50px;
+    }
+
+    .act_titulo{border: solid 1px black!important; border-radius: 30px!important; text-align: center!important; margin: 5px!important;}
     ///////////////
 
     .btn{
         text-decoration: none;
         color: rgba(152, 152, 152, 0.43);/*IconColor*/
-        width: 80px;
-        height: 80px;
+        width: 60px;
+        height: 60px;
         line-height: 80px;
-        font-size: 40px;
+        font-size: 0px;
         border-radius: 50%;
         text-align: center;
         vertical-align: middle;
         overflow: hidden;
         font-weight: bold;
         background-image: -webkit-linear-gradient(color($colors,light) 0%, color($colors,light) 40%);
-        background-image: linear-gradient(color($colors,light) 0%, color($colors,light) 100%);
+        background-image: linear-gradient(color($colors,light) 0%, color($colors,orange) 100%);
         text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
         box-shadow: inset 0 2px 0 rgba(255,255,255,0.5), 0 3px 3px rgba(0, 0, 0, 0.49);
-        border-bottom: solid 2px #b5b5b5;
+        border-bottom: solid 2px rgb(149, 97, 0);
         display: block;
-        margin: 10% auto;
+        margin: 60% auto;
     }
     .btn .fa {
-        line-height: 80px;
+        line-height: 60px;
     }
     .btn:active {/*onClick*/
-        background-image: -webkit-linear-gradient(#efefef 0%, #d6d6d6 100%);
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 2px 2px rgba(0, 0, 0, 0.19);
+        background-image: linear-gradient(rgb(149, 97, 0) 0%, color($colors,orange) 100%);
+        
+        box-shadow: inset 0 1px 0 rgba(202, 108, 32, 0.7), 0 2px 2px rgba(0, 0, 0, 0.19);
         border-bottom: none;
+    }
+}
+
+.alert-input{
+    background-image: linear-gradient(to right, lightblue , orange)!important;
+}
+
+.floating_toggle{
+    position: absolute;
+    top:1%;
+    width: 100%;
+    z-index: 99999999999999;
+    ion-item{
+        background-color: #f4f4f4;
+        width: 70%;
+        margin: auto;
     }
 }
